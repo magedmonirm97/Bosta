@@ -1,0 +1,78 @@
+.product-create {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  
+    .product-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+  
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+  
+        label {
+          font-weight: 600;
+          color: #2c3e50;
+        }
+  
+        input,
+        textarea,
+        select {
+          padding: 0.8rem;
+          border: 2px solid #eee;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+  
+          &:focus {
+            border-color: #7a55b9;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(122, 85, 185, 0.1);
+          }
+        }
+  
+        textarea {
+          min-height: 150px;
+          resize: vertical;
+        }
+  
+        .error {
+          border-color: #e74c3c;
+        }
+      }
+  
+      .error-message {
+        color: #e74c3c;
+        font-size: 0.9rem;
+      }
+  
+      .submit-button {
+        padding: 1rem 2rem;
+        background: #7a55b9;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+  
+        &:hover:not(:disabled) {
+          background: #6544a0;
+          transform: translateY(-2px);
+        }
+  
+        &:disabled {
+          background: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+  

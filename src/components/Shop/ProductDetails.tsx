@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ProductService } from '../../services/ProductService';
-import { CartContext } from '../../context/CartContext';
+import { useCart } from '../../context/CartContext';
 import { Product } from '../../interfaces/IProduct';
 import { toast } from 'react-toastify';
+import { useAuth } from '../../context/AuthContext';
 export const ProductDetails: React.FC = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart } = useCart();
   const { id } = useParams<{ id: string }>();
+  const { user } = useAuth();
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -55,12 +57,17 @@ export const ProductDetails: React.FC = () => {
             Rating: {product.rating.rate}/5 ({product.rating.count} reviews)
           </span>
         </div>
-        <button 
+        {user ?<button 
           onClick={handleAddToCart}
           className="add-to-cart-button"
         >
           Add to Cart
-        </button>
+        </button>:
+        <button
+        className='add-to-cart-button disabled'
+      >
+        Login to add to cart
+      </button>}
       </div>
     </div>
   );

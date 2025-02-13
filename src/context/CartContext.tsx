@@ -1,8 +1,8 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useContext } from 'react';
 import { CartItem, CartContextType } from '../interfaces/ICart';
 import { useAuth } from './AuthContext';
 
-export const CartContext = createContext<CartContextType>({
+const CartContext = createContext<CartContextType>({
   cart: [],
   addToCart: () => {},
   removeFromCart: () => {},
@@ -73,4 +73,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       {children}
     </CartContext.Provider>
   );
+};
+
+export const useCart = () => {
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error('useCart must be used within an AuthProvider');
+  }
+  return context;
 };

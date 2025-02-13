@@ -62,6 +62,14 @@
                 background: #34495e;
                 transform: translateY(-2px);
             }
+            &.disabled {
+              background: #ccc;
+              cursor: not-allowed;
+              color:rgb(51, 26, 26);
+              &:hover {
+                transform: none;
+              }
+            }
           }
       }
   }

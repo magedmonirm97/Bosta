@@ -1,8 +1,8 @@
-import React, { useContext} from 'react';
-import { CartContext } from '../../context/CartContext';
+import React from 'react';
 import emptyCartImage from '../../assets/empty-cart.png';
+import { useCart } from '../../context/CartContext';
 export const Cart: React.FC = () => {
-  const { cart, removeFromCart,updateQuantity, totalPrice } = useContext(CartContext);
+  const { cart, removeFromCart,updateQuantity, totalPrice } = useCart();
 
   const handleCheckout = () => {
     // simulate checkout process

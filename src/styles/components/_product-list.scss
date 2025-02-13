@@ -37,6 +37,7 @@
             justify-content: center;
             margin-top: 10px;
             .add-to-cart-button, .view-details-button {
+                width: 100%;
                 padding: 1rem;
                 background: #7a55b9;
                 color: white;
@@ -50,8 +51,18 @@
                 margin-bottom: 0;
                 border-radius: 5px;
                 box-shadow: #eee 0px 10px 10px -5px;
+                &.disabled {
+                  background: #ccc;
+                  cursor: not-allowed;
+                  font-size: .8rem;
+                  color:rgb(51, 26, 26);;
+                  &:hover {
+                    background: #ccc;
+                  }
+                }
               }
             .add-to-cart-button{
+              background: #e74c3c;
                 &:hover{
                     background: #b30909;
                 }

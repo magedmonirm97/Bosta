@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Product } from '../../interfaces/IProduct';
-import { CartContext } from '../../context/CartContext';
 import { toast } from 'react-toastify';
+import { useAuth } from '../../context/AuthContext';
+import { useCart } from '../../context/CartContext';
 
 export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
-    const { addToCart } = useContext(CartContext);
+    const { user } = useAuth();
+    const { addToCart } = useCart();
     const navigate = useNavigate();
 
     const handleAddToCart = () => {
@@ -34,13 +36,23 @@ export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
                 >
                     View Details
                 </button>
-                <button 
-                    onClick={handleAddToCart}
-                    className="add-to-cart-button"
-                >
-                    Add to Cart
-                </button>
-            </div>
-        </div>
-    );
+                {user ? (
+                 <button 
+                   onClick={handleAddToCart}
+                   className="add-to-cart-button"
+                 >
+                   Add to Cart
+                 </button>
+               ) : (
+                 <button 
+                   className="add-to-cart-button disabled"
+                   disabled
+                   title="Login to use cart"
+                 >
+                   Login to use cart
+                 </button>
+               )}
+                     </div>
+                 </div>
+             );
 };

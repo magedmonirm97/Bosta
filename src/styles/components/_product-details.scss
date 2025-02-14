@@ -73,6 +73,16 @@
           }
       }
   }
+
+@media (max-width: 850px) {
+    .product-details {
+        .product-image{
+            width: 350px;
+            height: 350px;
+            margin-bottom: 1rem;
+        }
+    }
+}
   
 @media (max-width: 768px) {
     .product-details {
